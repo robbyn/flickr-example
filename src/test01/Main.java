@@ -14,8 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            GoldenBookService gold = GoldenBookService.connect(
-                    loadProps("/setup.properties"));
+            GoldenBookService gold = new GoldenBookService(loadProps("/setup.properties"));
             PhotoInfo photo = gold.uploadPhoto(new File("/Users/maurice/perry.ch/hikes/_site/2015-12-20/preview/_DSF2480.jpg"), "Tannay", "La taverne");
             Album album = gold.createAlbum("Album Tannay", "Album Tannay description", photo.getId());
             String lastId = null;

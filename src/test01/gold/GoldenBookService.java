@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
 import org.apache.log4j.Logger;
 
 public class GoldenBookService implements Closeable {
@@ -30,12 +29,7 @@ public class GoldenBookService implements Closeable {
     private final Properties props = new Properties();
     private final Flickr flickr;
 
-    public static GoldenBookService connect(Properties props)
-            throws IOException {
-        return new GoldenBookService(props);
-    }
-
-    private GoldenBookService(Properties props) {
+    public GoldenBookService(Properties props) {
         flickr = new Flickr(props.getProperty("apiKey"),
                 props.getProperty("secret"), new REST());
         this.props.putAll(props);
